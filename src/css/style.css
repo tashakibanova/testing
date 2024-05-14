@@ -1,0 +1,59 @@
+  /* Стили для скрытых элементов */
+  /*.hidden {
+    display: none;
+  }*/
+  
+  /* Стили для списка карточек */
+  .cards {
+    margin: 10px 0; 
+    height: 25px; 
+    list-style: none; 
+    padding-left: 0; 
+  }
+  
+  /* Стили для карточек */
+  .card {
+    float: left; 
+    width: 40px; 
+    height: 32px; 
+    background-position: 0 0; 
+    /*text-indent: -9999px; */
+    margin-right: 4px; 
+    /*background-size: cover; */
+  }
+  
+  /* Стили для неактивных карточек */
+  /*.nocard {
+    opacity: 0.3; 
+  }*/
+    
+  /* Стили для поля ввода */
+  .input {
+    display: inline-block;
+    height: 23px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+    
+  /* Стили для кнопки отправки формы */
+  .submit {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    border: 1px solid #ced4da;
+  }
+  
+
