@@ -1,19 +1,4 @@
-export default function luhnAlgoritm(setValue) {
-  let nCheck = 0, bEven = false;
-  setValue = setValue.replace(/\D/g, "");
-
-  for (let n = setValue.length - 1; n >= 0; n--) {
-      var cDigit = setValue.charAt(n),
-            nDigit = parseInt(cDigit, 10);
-
-      if (bEven) {
-          if ((nDigit *= 2) > 9) nDigit -= 9;
-      }
-
-      nCheck += nDigit;
-      bEven = !bEven;
-  }
-
-  return (nCheck % 10) === 0;
+export default function luhnAlgoritm(value) {
+  return value.split('').reverse().map(Number).map((n, i) => i % 2 ? n * 2 : n).map(n => n > 9 ? (n % 10) + 1 : n).reduce((a, b) => a + b) % 10 === 0;
 }
 
