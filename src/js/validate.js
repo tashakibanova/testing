@@ -8,7 +8,7 @@ export default function luhnAlgoritm(value) {
 
       if ((nLength - i) % 2 === 1) {
           // Если позиция цифры нечетная...
-          nDigit = nDigit * 2;
+          nDigit *= 2;
           if (nDigit > 9) {
               nDigit -= 9;
           }
