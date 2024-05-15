@@ -26,9 +26,3 @@ deploy_script:  # скрипт развёртывания
   - echo "https://$GITHUB_TOKEN:x-oauth-basic@github.com" > "$HOME/.git-credentials"
   - npx push-dir --dir=dist --branch=gh-pages --force --verbose
 
-environment:
-  GIT_USERNAME: tashakibanova
-  GIT_PASSWORD: kiba1488
-
-clone_script:
-- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-git-deep-cloning.ps1'))
