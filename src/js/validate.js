@@ -1,4 +1,21 @@
 export default function luhnAlgoritm(value) {
-  return value.split('').reverse().map(Number).map((n, i) => i % 2 ? n * 2 : n).map(n => n > 9 ? (n % 10) + 1 : n).reduce((a, b) => a + b) % 10 === 0;
+  let nCheck = 0;
+  let nLength = value.length; 
+
+  for(let i = nLength - 1; i >= 0; i--) {
+      let cDigit = value[i];
+      let nDigit = parseInt(cDigit, 10);
+
+      if ((nLength - i) % 2 === 0) {
+          nDigit *= 2;
+          if (nDigit > 9) {
+              nDigit -= 9;
+          }
+      }
+
+      nCheck += nDigit;
+  }
+
+  return nCheck % 10 === 0;
 }
 
