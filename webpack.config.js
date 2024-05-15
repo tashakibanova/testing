@@ -1,15 +1,11 @@
-const path = require('path')
-const HtmlWebPackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin'); // Добавлено: импорт плагина CopyWebpackPlugin
-
+const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = {
-  mode: 'development',
-  target: 'web',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '',
   },
   module: {
     rules: [
@@ -18,9 +14,6 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
         },
       },
       {
@@ -32,28 +25,36 @@ module.exports = {
         ],
       },
       {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader, 'css-loader',
+        ],
       },
+    ],
+  },
+  optimization: {
+    minimizer: [
+      // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
+      `...`,
+      new CssMinimizerPlugin(),
     ],
   },
   plugins: [
     new HtmlWebPackPlugin({
       template: './src/index.html',
-      filename: path.resolve(__dirname, 'dist', 'index.html'),
+      filename: './index.html',
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
-    new CopyWebpackPlugin({ // Добавлено: добавление нового экземпляра плагина CopyWebpackPlugin
-        patterns: [
-          { from: 'licenses.txt', to: '' }, // Копирование licenses.txt в корень сборки
-        ]
-      })
   ],
-}
+};
