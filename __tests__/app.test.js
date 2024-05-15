@@ -23,13 +23,13 @@ describe('cardNumber', () => {
 describe('Luhnalgorithm', () => {
   it('should return true for valid credit card numbers', () => {
       expect(luhnAlgoritm('4242424242424242')).toBeTruthy();
-      expect(luhnAlgoritm('5188254376518825')).toBeTruthy();
+      expect(luhnAlgoritm('4012888888881881')).toBeTruthy();
       expect(luhnAlgoritm('378282246310005')).toBeTruthy();
   });
 
   it('should return false for invalid credit card numbers', () => {
       expect(luhnAlgoritm('4242424242424243')).toBeFalsy();
-      expect(luhnAlgoritm('5188254376518826')).toBeFalsy();
+      expect(luhnAlgoritm('4012888888881880')).toBeFalsy();
       expect(luhnAlgoritm('378282246310004')).toBeFalsy();
   });
 });
