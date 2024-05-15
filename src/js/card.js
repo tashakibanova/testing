@@ -10,6 +10,13 @@
   };
   
   export default function cardNumber(setValue) {
-    const firstDigits = setValue.substring(0, 2);
-    return cardBrands[firstDigits] || 'Unknown';
-  }  
+    let brand = 'Unknown';
+  
+    Object.keys(cardBrands).sort((a, b) => b.length - a.length).forEach(key => {
+        if (setValue.startsWith(key)) {
+            brand = cardBrands[key];
+        }
+    });
+
+    return brand;
+}  
