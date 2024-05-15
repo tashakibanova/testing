@@ -1,13 +1,14 @@
 export default function luhnAlgoritm(value) {
   let nCheck = 0;
-  let nLength = value.length; 
+  let nLength = value.length;
 
-  for(let i = nLength - 1; i >= 0; i--) {
+  for (let i = nLength - 1; i >= 0; i--) {
       let cDigit = value[i];
       let nDigit = parseInt(cDigit, 10);
 
-      if ((nLength - i) % 2 === 0) {
-          nDigit *= 2;
+      if ((nLength - i) % 2 === 1) {
+          // Если позиция цифры нечетная...
+          nDigit = nDigit * 2;
           if (nDigit > 9) {
               nDigit -= 9;
           }
@@ -18,4 +19,5 @@ export default function luhnAlgoritm(value) {
 
   return nCheck % 10 === 0;
 }
+
 
