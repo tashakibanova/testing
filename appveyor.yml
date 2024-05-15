@@ -9,8 +9,10 @@ branches:
 cache: node_modules  # кеширование
 
 install:
-  - ps: Install-Product node Current
-  - npm install  # команда установки зависимостей
+  - sudo apt-get update && sudo apt-get install curl
+  - curl -sL https://deb.nodesource.com/setup_current.x | sudo -E bash -
+  - sudo apt-get install -y nodejs
+  - npm install
 
 build: off  # отключаем встроенную в appveyor систему сборки
 
