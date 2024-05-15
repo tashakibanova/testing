@@ -1,5 +1,5 @@
 import luhnAlgoritm from '../src/js/validate';
-import { cardBrands } from '../src/js/validate'; 
+//import { cardBrands } from '../src/js/validate'; 
 import cardNumber from '../src/js/card'; 
 
 describe('cardNumber', () => {
